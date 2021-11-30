@@ -1,0 +1,24 @@
+<div class="container margintop">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="container text-center">
+                <img
+                class="img-fluid" style="width:300px   " src="assets/login-icon.png" alt=""/>
+            </div>
+            <h1 class="text-center">Login here to access pages</h1>
+            <form (ngSubmit)="onSubmit()">
+                <mat-form-field class="full-width " appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input [(ngModel)]="Credentials.username" name="username" type="text" matInput/>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>password</mat-label>
+                    <input [(ngModel)]="Credentials.password" name="username" type="password" matInput/>
+                </mat-form-field>
+                <div class="container text-center">
+                    <button  type="submit" mat-raised-button>Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

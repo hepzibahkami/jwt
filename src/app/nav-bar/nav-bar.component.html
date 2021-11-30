@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+    <span style="margin: 5px;"><a mat-icon-button routerLink="profile" routerLinkActive="active" class="nav-link ">Profile List</a></span>
+    <span  style="margin: 30px;"><a mat-icon-button routerLink="createprofile" routerLinkActive="active" class="nav-link"  >Add Profile</a></span>
+    <span class="example"></span>
+    <a *ngIf="!loggedIn" mat-icon-button routerLink="/login">Login</a>
+    <a *ngIf="loggedIn" mat-icon-button >User</a>
+    <a *ngIf="loggedIn" (click)="logOutUser()" mat-icon-button>Logout</a>
+</mat-toolbar>

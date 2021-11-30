@@ -1,0 +1,51 @@
+<h3 align="center">Profiles List</h3>
+
+<nav class="navbar">
+    <input class="form-control" type="text" name="firstname" [(ngModel)]="firstname" (ngModelChange)="Search()" 
+    placeholder="Enter first name to search">
+</nav>
+
+
+<table border="2" align="center" width="200" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th (click)="sort('empId')">First Name&nbsp;<i class="fa fa-sort"></i></th>
+            <!-- <th>First Name</th> -->
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phonenumber</th>
+            <th>isCompliant</th>
+            
+            <!-- <th>Address</th> -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let profile of profiles | orderBy: key: reverse | paginate: {itemsPerPage:5,currentPage:p};">
+            <td>{{profile.firstname}}</td>
+            <td>{{profile.lastname}}</td>
+            <td>{{profile.email}}</td>
+            <td>{{profile.phonenumber}}</td>
+            <td>{{profile.iscompliant}}
+                <div *ngIf="profile.iscompliant; else elseBlock">Yes</div>
+                <ng-template #elseBlock>No</ng-template>
+            </td>
+            <!-- <td>{{profile.doorno}}
+                {{profile.addressline}}
+                {{profile.city}}
+                {{profile.state}}
+                {{profile.pincode}}
+            </td> -->
+            
+            
+            <td>
+                <button (click)="updateProfiles(profile.empId)" class="btn btn-info">Update</button>
+                <button (click)="deleteProfiles(profile.empId)" class="btn btn-danger" style="margin-left:5px;">Delete</button>
+                <button (click)="profileDetails(profile.empId)" class="btn btn-info" style="margin-left:5px;">Details</button>
+            </td>
+            
+        </tr>
+    </tbody>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</table>
+
